@@ -20,6 +20,17 @@ body {
   align-items: center;
 }
 
+.dot{
+	background: #000;
+	border-radius: 50%;
+	content: "";
+	position: relative;
+	transform: translate(-50%, -50%);
+	width: 10%;
+	height: 10%;
+	z-index: 10;
+	opacity: 0.8;
+}
 // Machine
 
 $MachineWidth: 300px;
@@ -67,7 +78,7 @@ $MachineBodyHeight: 200px;
         width: 22px;
         height: 22px;
         background-color: $CoreMainColor/1.1;
-        border: 5px solid #f47c7c;
+        border: 6px solid #f47c7c;
         border-radius: 50%;
         position: absolute;
         top: 70px;
@@ -78,28 +89,235 @@ $MachineBodyHeight: 200px;
     }
     #control2 {
       background-color: $CoreBackground/1.2;
-      width: 33%;
+	  width: 33%;
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
+	  #clock{
+		  width: 90%;
+		  height:90px;
+		  background-color: $CoreMainColor*1.1;
+		  border-radius: 50%;
+		 #dot1{
+			 @extend .dot;
+			left: 50%;
+			top: 10%;
+		 }
+		 #dot2{
+			@extend .dot;
+		   left: 80%;
+		   top: 13%;
+		}
+		#dot3{
+			@extend .dot;
+		   left: 20%;
+		   top: 4%;
+		}
+		#dot4{
+			@extend .dot;
+		   left: 10%;
+		   top: 20%;
+		}
+		#dot5{
+			@extend .dot;
+		   left: 90%;
+		   top: 10%;
+		}
+		#dot6{
+			@extend .dot;
+		   left: 22%;
+		   top: 30%;
+		}
+		#dot7{
+			@extend .dot;
+		   left: 80%;
+		   top: 20%;
+		}
+		#dot8{
+			@extend .dot;
+		   left: 50%;
+		   top: 20%;
+		}
+		#pin{
+			position: relative;
+			top: -40%;
+			left: 50%;
+			width: 5px;
+			height: 25px;
+			border-left: 2px solid transparent;
+			border-right: 2px solid transparent;
+			border-bottom: 25px solid #f47c7c;
+			z-index: 99999999999;
+			transform: translate(-50%, -50%);
+		}
+	  }
     }
     #control3 {
+		display: flex;
+		flex-direction: column;
+		#banner{
+			position: absolute;
+			top: 3%;
+			right: 8%;
+			font-size: 18px;
+			font-weight: 600;
+			color: black;
+		}
+		#bigcircle{
+			width: 35px;
+			height: 35px;
+			background-color: $CoreMainColor/1.1;
+			border: 9px solid #f47c7c;
+			border-radius: 50%;
+			position: absolute;
+			top: 43px;
+			right:11%;
+			color: white;
+			padding: 1px;
+		}
+		#turnon{
+			position: absolute;
+			width: 30px;
+			height: 10px;
+			top: 31%;
+			right: 11%;
+			display: flex;
+			#off{
+				width: 50%;	
+				background-color: #554f3f;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				#symbol{
+					height: 7px;
+					width: 7px;
+					border-radius: 50%;
+					border: 1px solid white;
+				}
+
+			}
+			#on{
+				width: 50%;
+				background-color: $CoreBackground/1.2;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				#symbol{
+					height: 7px;
+					width: 0.1px;
+					border: 1px solid white;
+				}
+			}
+		}
     }
   }
   #bodymachine {
     width: 88%;
     height: $MachineBodyHeight;
     background-color: $MachineBackground;
-    z-index: 999;
+	z-index: 999;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: start;
+	position: relative;
+	#handle{
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		#tophandle{
+			width: 25%;
+			height: 17px;
+			background-color: $CoreMainColor/1.05;
+		}
+		#bodyhandle{
+			width: 25%;
+			height: 30px;
+			border-bottom-left-radius: 20px;
+			border-bottom-right-radius: 20px;
+			background-color: $CoreMainColor;
+			#wrapflex{
+				position: relative;
+				top: 20%;
+				left: 50%;
+				display: flex;
+				align-items: center;
+				width: 200px;
+				#stickhandle{
+					width: 60%;
+					height:15px;
+					background-color: $CoreMainColor;
+				}
+				#bottom{
+					position: relative;
+					width: 10px;
+					height: 15px;
+					left: -2%;
+					border-radius: 50%;
+					background-color: $CoreMainColor/1.1;
+				}
+			}
+			
+		}
+		#bottomhandle{
+			width: 7%;
+			height: 5px;
+			background-color: $CoreMainColor;
+		}
+		
+	}
+	#glass{
+		margin-top: 9.7%;
+		border-top: 55px solid #f47c7c;
+		border-left: 12px solid transparent;
+		border-right: 12px solid transparent;
+		height: 0;
+		width: 60px;
+	}
+	#custom{
+		position: relative;
+		top: 42%;
+		border-top: 10px solid  #554f3f;
+		border-left: 2.4px solid transparent;
+		border-right: 2.4px solid transparent;
+		height: 0;
+		width: 50px;
+	}
   }
   #base {
     width: 100%;
     height: 50px;
     background-color: $CoreMainColor;
     border-radius: $CoreRadius/5;
-    border-bottom: 6px solid #554f3f;
+	border-bottom: 6px solid #554f3f;
+	#lightutton{
+		height: 7px;
+		width: 7px;
+		border-radius: 50%;
+		background-color: lightgreen;
+		position: relative;
+		top: 18px;
+		left: 10px;
+	}
   }
+  
 }
 
 #AllButton {
   margin-top: 25px;
   width: $MachineWidth;
   display: flex;
+  button {
+	flex: 1;
+	margin: 0 5px;
+	background: #ececf4;
+	border: none;
+	outline: none;
+	border-radius: 6px;
+	padding: 7px 10px;
+	box-shadow: -1px 2px 0 0 rgba(black, 0.2);
+	font: inherit;
+	font-size: 0.8em;
+  }
 }
