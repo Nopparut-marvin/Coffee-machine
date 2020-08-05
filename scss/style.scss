@@ -57,22 +57,24 @@ $MachineBodyHeight: 200px;
   position: relative;
   overflow: hidden;
   #coremachine {
+	flex-grow: 1;
     width: 100%;
     height: $CoreHeight;
     z-index: 99999;
     background-color: $CoreMainColor;
     border-radius: $CoreRadius;
     display: flex;
-    justify-content: space-around;
     #control1 {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width:33%;
+		position: relative;
       #time {
         width: 43px;
         background-color: $CoreBackground/1.2;
-        position: absolute;
-        top: 33px;
-        left: 30px;
         color: white;
-        padding: 1px;
+        margin-top: 24%;
       }
       #circle {
         width: 22px;
@@ -80,11 +82,8 @@ $MachineBodyHeight: 200px;
         background-color: $CoreMainColor/1.1;
         border: 6px solid #f47c7c;
         border-radius: 50%;
-        position: absolute;
-        top: 70px;
-        left: 40px;
         color: white;
-        padding: 1px;
+        margin-top: 10%;
       }
     }
     #control2 {
@@ -155,10 +154,10 @@ $MachineBodyHeight: 200px;
     #control3 {
 		display: flex;
 		flex-direction: column;
+		width:33%;
+		align-items: center;
 		#banner{
-			position: absolute;
-			top: 3%;
-			right: 8%;
+			padding-top: 8%;
 			font-size: 18px;
 			font-weight: 600;
 			color: black;
@@ -169,18 +168,13 @@ $MachineBodyHeight: 200px;
 			background-color: $CoreMainColor/1.1;
 			border: 9px solid #f47c7c;
 			border-radius: 50%;
-			position: absolute;
-			top: 43px;
-			right:11%;
 			color: white;
-			padding: 1px;
+			margin-top: 6%;
 		}
 		#turnon{
-			position: absolute;
 			width: 30px;
 			height: 10px;
-			top: 31%;
-			right: 11%;
+			margin-top: 8%;
 			display: flex;
 			#off{
 				width: 50%;	
@@ -219,7 +213,7 @@ $MachineBodyHeight: 200px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: start;
+	justify-content: space-between;
 	position: relative;
 	#handle{
 		width: 100%;

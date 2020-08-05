@@ -37,32 +37,32 @@ body {
   position: relative;
   overflow: hidden; }
   #coffeeMachine #coremachine {
+    flex-grow: 1;
     width: 100%;
     height: 120px;
     z-index: 99999;
     background-color: #f4f0cb;
     border-radius: 30px;
-    display: flex;
-    justify-content: space-around; }
-    #coffeeMachine #coremachine #control1 #time {
-      width: 43px;
-      background-color: #99a574;
-      position: absolute;
-      top: 33px;
-      left: 30px;
-      color: white;
-      padding: 1px; }
-    #coffeeMachine #coremachine #control1 #circle {
-      width: 22px;
-      height: 22px;
-      background-color: #dedab9;
-      border: 6px solid #f47c7c;
-      border-radius: 50%;
-      position: absolute;
-      top: 70px;
-      left: 40px;
-      color: white;
-      padding: 1px; }
+    display: flex; }
+    #coffeeMachine #coremachine #control1 {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 33%;
+      position: relative; }
+      #coffeeMachine #coremachine #control1 #time {
+        width: 43px;
+        background-color: #99a574;
+        color: white;
+        margin-top: 24%; }
+      #coffeeMachine #coremachine #control1 #circle {
+        width: 22px;
+        height: 22px;
+        background-color: #dedab9;
+        border: 6px solid #f47c7c;
+        border-radius: 50%;
+        color: white;
+        margin-top: 10%; }
     #coffeeMachine #coremachine #control2 {
       background-color: #99a574;
       width: 33%;
@@ -111,11 +111,11 @@ body {
           transform: translate(-50%, -50%); }
     #coffeeMachine #coremachine #control3 {
       display: flex;
-      flex-direction: column; }
+      flex-direction: column;
+      width: 33%;
+      align-items: center; }
       #coffeeMachine #coremachine #control3 #banner {
-        position: absolute;
-        top: 3%;
-        right: 8%;
+        padding-top: 8%;
         font-size: 18px;
         font-weight: 600;
         color: black; }
@@ -125,17 +125,12 @@ body {
         background-color: #dedab9;
         border: 9px solid #f47c7c;
         border-radius: 50%;
-        position: absolute;
-        top: 43px;
-        right: 11%;
         color: white;
-        padding: 1px; }
+        margin-top: 6%; }
       #coffeeMachine #coremachine #control3 #turnon {
-        position: absolute;
         width: 30px;
         height: 10px;
-        top: 31%;
-        right: 11%;
+        margin-top: 8%;
         display: flex; }
         #coffeeMachine #coremachine #control3 #turnon #off {
           width: 50%;
@@ -166,7 +161,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: start;
+    justify-content: space-between;
     position: relative; }
     #coffeeMachine #bodymachine #handle {
       width: 100%;
