@@ -44,17 +44,33 @@ body {
     background-color: #f4f0cb;
     border-radius: 30px;
     display: flex; }
+    #coffeeMachine #coremachine.isPlugIn #coremachine {
+      opacity: 0.2; }
+    #coffeeMachine #coremachine.isFilling {
+      animation-name: shake;
+      animation-duration: 100ms;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite; }
+      #coffeeMachine #coremachine.isFilling #control2 #clock #pin {
+        animation-name: rotate;
+        animation-duration: 2s;
+        animation-iteration-count: infinite; }
+    #coffeeMachine #coremachine.isFilled #tub .clothes {
+      opacity: 1; }
+    #coffeeMachine #coremachine.isStarting {
+      animation-duration: 200ms;
+      animation-timing-function: cubic-bezier(0, -0.01, 0.61, 0.01); }
     #coffeeMachine #coremachine #control1 {
       display: flex;
       flex-direction: column;
       align-items: center;
       width: 33%;
-      position: relative; }
+      position: relative;
+      justify-content: center; }
       #coffeeMachine #coremachine #control1 #time {
         width: 43px;
         background-color: #99a574;
-        color: white;
-        margin-top: 24%; }
+        color: white; }
       #coffeeMachine #coremachine #control1 #circle {
         width: 22px;
         height: 22px;
@@ -100,22 +116,22 @@ body {
           top: 20%; }
         #coffeeMachine #coremachine #control2 #clock #pin {
           position: relative;
-          top: -40%;
-          left: 50%;
+          top: -55%;
+          left: 47%;
           width: 5px;
           height: 25px;
           border-left: 2px solid transparent;
           border-right: 2px solid transparent;
           border-bottom: 25px solid #f47c7c;
           z-index: 99999999999;
-          transform: translate(-50%, -50%); }
+          transform-origin: bottom; }
     #coffeeMachine #coremachine #control3 {
       display: flex;
       flex-direction: column;
       width: 33%;
-      align-items: center; }
+      align-items: center;
+      justify-content: center; }
       #coffeeMachine #coremachine #control3 #banner {
-        padding-top: 8%;
         font-size: 18px;
         font-weight: 600;
         color: black; }
@@ -210,7 +226,7 @@ body {
     #coffeeMachine #bodymachine #custom {
       position: relative;
       top: 42%;
-      border-top: 10px solid  #554f3f;
+      border-top: 10px solid #554f3f;
       border-left: 2.4px solid transparent;
       border-right: 2.4px solid transparent;
       height: 0;
@@ -230,6 +246,33 @@ body {
       top: 18px;
       left: 10px; }
 
+@keyframes shake {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0); }
+  25% {
+    transform: translate(-1.5px, 1.5px) rotate(0.5deg); }
+  50% {
+    transform: translate(-0.5px, -0.5px) rotate(0.5deg); } }
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg); }
+  12% {
+    transform: rotate(45deg); }
+  25% {
+    transform: rotate(90deg); }
+  37% {
+    transform: rotate(135deg); }
+  50% {
+    transform: rotate(180deg); }
+  62% {
+    transform: rotate(225deg); }
+  75% {
+    transform: rotate(270deg); }
+  88% {
+    transform: rotate(315deg); }
+  100% {
+    transform: rotate(360deg); } }
 #AllButton {
   margin-top: 25px;
   width: 300px;

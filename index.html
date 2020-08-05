@@ -1,70 +1,128 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Coffee Machine</title>
-    <link rel="stylesheet" type="text/css" href="./css/style.css">
-</head>
-<body>
-    <div id="wrap">	
-        <div id="coffeeMachine">
-            <div id="coremachine">
-                <div id="control1">
-                   <div id="time">12:00</div>
-                   <div id="circle">
-                   </div> 
-                </div>
-                <div id="control2">
-                    <div id="clock">
-                        <div id="dot1"></div>
-                        <div id="dot2"></div>
-                        <div id="dot3"></div>
-                        <div id="dot4"></div>
-                        <div id="dot5"></div>
-                        <div id="dot6"></div>
-                        <div id="dot7"></div>
-                        <div id="dot8"></div>
-                        <div id="pin"></div>
-                    </div>
-                </div>
-                <div id="control3">
-                    <div id="banner">Marvin</div>
-                    <div id="bigcircle"></div>
-                    <div id="turnon">
-                        <div id="off">
-                            <div id="symbol"></div>
-                        </div>
-                        <div id="on">
-                            <div id="symbol"></div>
-                        </div>
-                    </div>
-                </div>
+    <link rel="stylesheet" type="text/css" href="./css/style.css" />
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="coffeeMachine" ">
+        <div id="coremachine">
+          <div id="control1">
+            <div id="time">12:00</div>
+            <div id="circle"></div>
+          </div>
+          <div id="control2">
+            <div id="clock">
+              <div id="dot1"></div>
+              <div id="dot2"></div>
+              <div id="dot3"></div>
+              <div id="dot4"></div>
+              <div id="dot5"></div>
+              <div id="dot6"></div>
+              <div id="dot7"></div>
+              <div id="dot8"></div>
+              <div id="pin"></div>
             </div>
-            <div id="bodymachine">
-                <div id="handle">
-                    <div id="tophandle"></div>
-                    <div id="bodyhandle">
-                        <div id="wrapflex">
-                            <div id="stickhandle"></div>
-                            <div id="bottom"></div>
-                        </div>
-                    </div>
-                    <div id="bottomhandle"></div>
-                </div>
-                <div id="custom"></div>
-                <div id="glass"></div>
-                
+          </div>
+          <div id="control3">
+            <div id="banner">Marvin</div>
+            <div id="bigcircle"></div>
+            <div id="turnon">
+              <div id="off">
+                <div id="symbol"></div>
+              </div>
+              <div id="on">
+                <div id="symbol"></div>
+              </div>
             </div>
-            <div class="halfcircle"></div>
-            <div id="base">
-                <div id="lightutton"></div>
-            </div>
-            
+          </div>
         </div>
-        <div id="AllButton">
-            <button >EMPTY</button>
-            <button >CLOSE</button>
-            <button >START</button>
+        <div id="bodymachine">
+          <div id="handle">
+            <div id="tophandle"></div>
+            <div id="bodyhandle">
+              <div id="wrapflex">
+                <div id="stickhandle"></div>
+                <div id="bottom"></div>
+              </div>
+            </div>
+            <div id="bottomhandle"></div>
+          </div>
+          <div id="custom"></div>
+          <div id="glass"></div>
         </div>
+        <div class="halfcircle"></div>
+        <div id="base">
+          <div id="lightutton"></div>
+        </div>
+      </div>
+      <div id="AllButton">
+        <button id="plugin">PLUG IN</button>
+        <button id="clear" disabled>CLEAR</button>
+        <button id="power" disabled>START</button>
+      </div>
     </div>
-</body>
+    <script>
+        const washSpeed = 600;
+      const coffeeMachine = document.getElementById("coremachine");
+      const status = {
+        plugin: {
+          isActive: true,
+          statusClass: "isPlugIn",
+          controller: document.getElementById("plugin"),
+          controllerLabel: ["PLUG IN ", "UNPLUG"],
+        },
+        clear: {
+          isActive: false,
+          statusClass: "isCleared",
+          controller: document.getElementById("clear"),
+          controllerLabel: ["Clear", "Unclear"],
+        },
+        power: {
+          isActive: false,
+          statusClass: "isFilling",
+          controller: document.getElementById("power"),
+          controllerLabel: ["STOP", "START"],
+        },
+      };
+
+      for (let action in status) {
+        const { statusClass, controller, controllerLabel } = status[action];
+
+        controller.addEventListener("click", function (event) {
+          const { isActive } = status[action];
+          coffeeMachine.classList.toggle(statusClass);
+          this.innerHTML = controllerLabel[isActive * 1];
+
+          if (action === "power" && !isActive) {
+            // Slow start
+            coffeeMachine.classList.add(statusClass);
+        //     coffeeMachine.classList.add("isStarting");
+        //     setTimeout(() => {
+        //       coffeeMachine.classList.remove("isStarting");
+        //     }, washSpeed * 2);
+        //   }
+        }
+          status[action].isActive = !isActive;
+
+          setTimeout(function () {
+            updateMachine();
+          }, 100); // Timeout needed because of a bug on FF when updating innerHTML
+        });
+        function updateMachine() {
+          const { plugin, clear, power } = status;
+
+          // Update playground
+
+          plugin.controller.disabled = power.isActive;
+        //   clear.controller.disabled = !opening.isActive;
+          power.controller.disabled = plugin.isActive 
+
+          // Update screen text
+
+        }
+      }
+    </script>
+  </body>
 </html>
