@@ -1,31 +1,118 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Coffee Machine</title>
-    <link rel="stylesheet" type="text/css" href="./css/style.css">
-</head>
-<body>
-    <div id="wrap">	
-        <div id="coffeeMachine">
-            <div id="coremachine">
-                <div id="control1">
-                   <div id="time">12:00</div>
-                   <div id="circle"></div> 
-                </div>
-                <div id="control2">s</div>
-                <div id="control3">s</div>
+    <link rel="stylesheet" type="text/css" href="./css/style.css" />
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="coffeeMachine">
+        <div id="coremachine">
+          <div id="control1">
+            <div id="time">12:00</div>
+            <div id="circle"></div>
+          </div>
+          <div id="control2">
+            <div id="clock">
+              <div id="dot1"></div>
+              <div id="dot2"></div>
+              <div id="dot3"></div>
+              <div id="dot4"></div>
+              <div id="dot5"></div>
+              <div id="dot6"></div>
+              <div id="dot7"></div>
+              <div id="dot8"></div>
+              <div id="pin"></div>
             </div>
-            <div id="bodymachine"></div>
-            <div class="halfcircle"></div>
-            <div class="glass"></div>
-            <div id="base"></div>
-            <div class="handle"></div>
+          </div>
+          <div id="control3">
+            <div id="banner">Marvin</div>
+            <div id="bigcircle"></div>
+            <div id="turnon">
+              <div id="off">
+                <div id="symbol"></div>
+              </div>
+              <div id="on">
+                <div id="symbol"></div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div id="AllButton">
-            <button >EMPTY</button>
-            <button >CLOSE</button>
-            <button >START</button>
+        <div id="bodymachine">
+          <div id="handle">
+            <div id="tophandle"></div>
+            <div id="bodyhandle">
+              <div id="wrapflex">
+                <div id="stickhandle"></div>
+                <div id="bottom"></div>
+              </div>
+            </div>
+            <div id="bottomhandle"></div>
+          </div>
+          <div id="middle">
+            <div id="image">
+              <svg id="svg1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#554f3f" fill-opacity="1" d="M0,96L48,117.3C96,139,192,181,288,176C384,171,480,117,576,122.7C672,128,768,192,864,192C960,192,1056,128,1152,117.3C1248,107,1344,149,1392,170.7L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
+              <svg id="svg2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#554f3f" fill-opacity="1" d="M0,96L48,117.3C96,139,192,181,288,176C384,171,480,117,576,122.7C672,128,768,192,864,192C960,192,1056,128,1152,117.3C1248,107,1344,149,1392,170.7L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>  
+            </div>
+         </div>
+          <div id="glass"> 
+            <div id="custom"></div>
+          </div>
         </div>
+        <div class="halfcircle"></div>
+        <div id="base">
+          <div id="lightbutton"></div>
+        </div>
+      </div>
+      <div id="AllButton">
+        <button id="plugin">TURN ON</button>
+        <button id="power" disabled>START</button>
+      </div>
     </div>
-</body>
+    <script>
+      const water = document.getElementById("middle")
+      const coffeeMachine = document.getElementById("coremachine");
+      const light = document.getElementById("lightbutton")
+      const AllAct = {
+        plugin: {
+          isCall: true,
+          addClass: "isPlugIn",
+          controller: document.getElementById("plugin"),
+          controllerLabel: ["TURN ON", "TURN OFF"],
+        },
+        power: {
+          isCall: false,
+          addClass: "isFilling",
+          controller: document.getElementById("power"),
+          controllerLabel: ["STOP", "START"],
+        },
+      };
+
+      for (let activity in AllAct) {
+        const { addClass, controller, controllerLabel } = AllAct[activity];
+
+        controller.addEventListener("click", function (event) {
+          const { isCall } = AllAct[activity];
+          water.classList.toggle(addClass);
+          light.classList.toggle(addClass);
+          coffeeMachine.classList.toggle(addClass);
+          this.innerHTML = controllerLabel[isCall*1];
+          if (activity === "power" && !isCall) {
+            water.classList.add(addClass)
+            coffeeMachine.classList.add(addClass);
+
+        }
+         AllAct[activity].isCall = !isCall;
+          setTimeout(function () {
+            updateMachine();
+          }, 100);
+        });
+        function updateMachine() {
+          const { plugin, power } = AllAct;
+          plugin.controller.disabled = power.isCall;
+          power.controller.disabled = plugin.isCall;
+        }
+      }
+    </script>
+  </body>
 </html>
