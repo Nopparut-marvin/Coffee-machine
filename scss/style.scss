@@ -75,8 +75,14 @@ $MachineBodyHeight: 200px;
       animation-timing-function: ease-in-out;
       animation-iteration-count: infinite;
       #control2 #clock #pin {
-		animation-name: rotate;
-		animation-duration: 2s;
+      animation-name: rotate;
+      animation-duration: 2s;
+      animation-iteration-count: infinite;
+      }
+      #bodymachine #middle {
+        animation-name: shake;
+      animation-duration: 100ms;
+      animation-timing-function: ease-in-out;
       animation-iteration-count: infinite;
       }
     }
@@ -245,6 +251,7 @@ $MachineBodyHeight: 200px;
       display: flex;
       flex-direction: column;
       align-items: center;
+      z-index: 9099999;
       #tophandle {
         width: 25%;
         height: 17px;
@@ -285,21 +292,56 @@ $MachineBodyHeight: 200px;
       }
     }
     #glass {
-      margin-top: 9.7%;
       border-top: 55px solid #f47c7c;
       border-left: 12px solid transparent;
       border-right: 12px solid transparent;
       height: 0;
       width: 60px;
+      z-index: 999999999999;
     }
-    #custom {
-      position: relative;
-      top: 42%;
-      border-top: 10px solid #554f3f;
-      border-left: 2.4px solid transparent;
-      border-right: 2.4px solid transparent;
-      height: 0;
-      width: 50px;
+    // #custom {
+    //   position: relative;
+    //   top: 42%;
+    //   border-top: 10px solid #554f3f;
+    //   border-left: 2.4px solid transparent;
+    //   border-right: 2.4px solid transparent;
+    //   height: 0;
+    //   width: 50px;
+    // }
+    #middle{
+      width: 100%;
+      height: 36px;
+      align-items: center;
+      overflow: hidden;
+      flex-direction: column;
+      justify-content: center;
+      display: none;
+      border: none;
+      &.isFilling {
+        display: flex;
+        animation-name: flow;
+        animation-duration: 0.5s;
+        animation-iteration-count: infinite;
+      }
+    #image{
+      align-items: center;
+      overflow: hidden;
+      flex-direction: column;
+      justify-content: center;
+      display: flex;
+      transform: rotate(90deg);
+      
+      #svg1{
+        position: relative;
+        width: 50px;
+      }
+      #svg2{
+        transform: rotate(180deg);
+        width: 50px;
+
+      }
+      
+    }
     }
   }
   #base {
@@ -335,7 +377,7 @@ $MachineBodyHeight: 200px;
 }
 
 @keyframes rotate {
-	0%   {transform: rotate(0deg);}
+	
 	12%  {transform: rotate(45deg);}
 	25%  {transform: rotate(90deg);}
 	37%  {transform: rotate(135deg);}
@@ -344,6 +386,15 @@ $MachineBodyHeight: 200px;
 	75%  {transform: rotate(270deg);}
 	88%  {transform: rotate(315deg);}
 	100% {transform: rotate(360deg);}
+}
+
+@keyframes flow{
+  0%{
+    transform: translate3d(0,-36px,0);
+  }
+  100% {
+    transform: translate3d(0,36px,0);
+  }
 }
 
 //Button--------------------------------------------
